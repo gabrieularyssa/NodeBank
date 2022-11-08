@@ -115,6 +115,7 @@ function buildAccount() {
 }
 //adicionando valor a conta do usuario
 function deposit() {
+
     inquirer.prompt([
         {
             name: 'accountName',
@@ -138,11 +139,13 @@ function deposit() {
 
                     //adicionar saldo
                     addAmount(accountName, amount)
-                    operation()
+                    // return operation()
                 })
-                .catch(err => console.log(err))
+                .catch(err => 
+                    console.log(err))
         })
         .catch(err => console.log(err))
+        
 }
 
 //função para verificar se a conta existe
@@ -159,7 +162,7 @@ function addAmount(accountName, amount) {
 
     //gerando um erro para quando nao é inserido valor de deposito
     if (!amount) {
-        console.log(chalk.bgRed.bold.black('Ocorreu um erro, tente novamente!'))
+        console.log(chalk.bgRed.bold.black('Ocorreu um erro ao depositar, verifique se o valor é válido!'))
         return deposit()
     }
     //o console.log mostrara o retorno da função getAccount, por tanto o JSON do arquivo selecionado pelo accountName
@@ -268,6 +271,7 @@ function withdraw(){
                 console.log(chalk.bgRed.bold('A senha informada está incorreta, verifique a conta e senha novamente para que seja possivel efetuar o saque!'))
                 return withdraw()
             }
+            
 
         })
         
